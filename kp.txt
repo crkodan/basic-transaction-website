@@ -1,0 +1,57 @@
+@foreach($invoice as $i)
+                          @if($i->statuspelunasan == 0)
+                          <tr>
+                              <th>{{$i->tanggalpo}}</th>
+                              <th>Pesanan dari {{$i->namaPemesan}} (belum lunas)</th>
+                              <th>0<br></th>
+                              <th>{{$i->hargaTotal}}<br></th>
+                              <th>
+                                <script>
+                                  saldo = saldo - {{$i->hargaTotal}};
+                                  document.write(saldo);
+                                </script>
+                          </tr>
+                          @endif
+                          @if($i->statuspelunasan == 1)
+                          <tr>
+                              <th>{{$i->tanggalfaktur}}</th>
+                              <th>Pesanan dari {{$i->namaPemesan}} (lunas)</th>
+                              <th>{{$i->hargaTotal}}<br></th>
+                              <th>0<br></th>
+                              <th>
+                                <script>
+                                  saldo = saldo + {{$i->hargaTotal}};
+                                  document.write(saldo);
+                                </script>
+                              </th>
+                          </tr>
+                          @endif
+                          @endforeach
+                          @foreach($listCatatan as $ls)
+                          @if($ls->statuskerja == 0)
+                          <tr>
+                              <th>{{$ls->tanggalpo}}</th>
+                              <th>Pengerjaan pesanan oleh Vendor {{$ls->namaVendor}}</th>
+                              <th>0<br></th>
+                              <th>{{$ls->biaya}}<br></th>
+                              <th>
+                              <script>
+                                  saldo = saldo - {{$ls->biaya}};
+                                  document.write(saldo);
+                                </script>
+                          </tr>
+                          @endif
+                          @if($ls->statuskerja == 1)
+                          <tr>
+                              <th>{{$ls->tanggalpo}}</th>
+                              <th>Pengerjaan pesanan oleh Vendor {{$ls->namaVendor}}</th>
+                              <th>{{$ls->biaya}}<br></th>
+                              <th>0<br></th>
+                              <th>
+                              <script>
+                                  saldo = saldo + {{$ls->biaya}};
+                                  document.write(saldo);
+                                </script>
+                          </tr>
+                          @endif
+                          @endforeach

@@ -1,0 +1,4 @@
+update sisi admin:
+- buka pembelian-> masuk ke modal -> pilih vendor dan tetapkan harga, serta mengubah jadi waiting
+  -> vendor set tanggal jatuh tempo -> langsung update ke 1 / on process
+- 
